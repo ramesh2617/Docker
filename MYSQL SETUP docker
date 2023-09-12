@@ -1,1 +1,56 @@
-MYSQL SETUP docker
+How to Create MySQL Database with Docker?
+To create a MySQL database with Docker, follow the below-provided steps:
+
+Step 1: Pull MySQL Image from Docker Hub
+
+docker pull mysql
+
+Step 2: Build and Run MySQL Container
+
+docker run -d --name mySql-cont -e MYSQL_ROOT_PASSWORD=mysql123 mysql:latest
+
+STEP -3View Running MySQL Container
+
+docker ps
+
+Step 4: Access MySQL Container
+
+docker exec -it mySql-cont bash
+
+Step 5: Connect to MySQL Database
+
+mysql -uroot -p
+
+Step 6: Create a Database in MySQL
+CREATE DATABASE TestDB;
+
+Step 7: Verify Created Database
+SHOW DATABASES;
+
+Step 8: Select Database
+USE TestDB;
+
+Step 9: Create New Table in Database
+CREATE TABLE Student (PersonID INT, Name VARCHAR(20), Age VARCHAR(20), City VARCHAR(20));
+
+Step 10: Insert Values in Table
+INSERT INTO Student VALUE ("1", "Laiba", "23", "Islamabad");
+
+Step 11: Select Data from the Database
+SELECT * FROM Student;
+
+Bonus Tip: Delete the Database
+DROP DATABASE TestDB;
+
+Conclusion
+To create a MySQL database with Docker, first, pull the MySQL Image from Docker Hub. Next, 
+build and run the MySQL container using the “docker run -d –name <cont-name> -e MYSQL_ROOT_PASSWORD=<password> <image-name>” command. 
+Then, access the MySQL container and connect to the MySQL database.
+After that, create a Database using the “CREATE DATABASE <database-name>;” command. Furthermore,
+users can create a new table in the database, insert values in the table and select data from the database.
+
+
+
+
+
+
