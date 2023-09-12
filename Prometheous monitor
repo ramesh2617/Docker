@@ -1,0 +1,21 @@
+Install Prometheus
+Create directory for storing Prometheus data:
+sudo mkdir -p /opt/prometheus/data
+
+Set user, which ID is 65534 as owner for newly created directory:
+sudo chown -R 65534:65534 /opt/prometheus
+
+Run the following command to create a container for Prometheus that uses host network:
+docker run -d --name=prometheus --restart=always --network=host \ -v /opt/prometheus/data:/prometheus \ prom/prometheus
+
+User-defined bridge network can be used for listening on different port. By default, Prometheus service is listening on port 9090. It can be changed with -p option.
+docker network create app-net
+
+docker run -d --name=prometheus --restart=always --network=app-net \
+    -p 8080:9090 \
+    -v /opt/prometheus/data:/prometheus \
+    prom/prometheus
+
+
+Testing Prometheus
+Prometheus provides web UI. Open a web browser and go to http://<IP_ADDRESS>:9090, where <IP_ADDRESS> is the IP address of the system.
