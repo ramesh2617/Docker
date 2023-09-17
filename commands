@@ -1,0 +1,51 @@
+1) Manage Images Commands
+==============================================
+docker image ls------>	Lists images
+docker image rm mysql--------->	Removes an image
+docker tag image tag	-------->Tags an image
+    example----    docker tag httpd:latest httpd:myhttpd
+
+docker history image	------>Displays the image history
+docker inspect image	-------->Displays low-level information about an image
+
+
+2) Run Commands
+============================================================
+Flag	Explanation
+--detach , -d	----->Runs a container in the background and prints the container ID
+docker run -d httpd
+
+--env , -e	------->Sets environment variables
+--hostname , -h	---->Sets a hostname to a container
+--label , -l	----->Creates a meta data label for a container
+--name	------>Assigns a name to a container
+--network	------>Connects a container to a network
+--rm	----->Removes container when it stops
+--read-only	----->Sets the container filesystem as read-only
+--workdir , -w	---->Sets a working directory in a container
+
+Registry Commands
+=====================================
+  docker login	---->Logs in to a registry
+docker logout	---->Logs out from a registry
+docker pull mysql--->Pulls an image from a registry
+docker push repo/ rhel-httpd:latest---->	Pushes an image to a registry
+
+---->Just three simple steps:
+
+docker login --username username
+
+prompts for password if you omit --password which is recommended as it doesn't store it in your command history
+docker tag my-image username/my-repo
+
+docker push username/my-repo
+docker search term	---->Searches Docker Hub for images with the specified term
+
+Network Commands
+=====================================================
+  docker network create networkname--->	Creates a new network
+docker network rm networkname---->	Removes a specified network
+docker network ls --->	Lists all networks
+docker network connect networkname container---->	Connects a container to a network
+docker network disconnect networkname container--->	Disconnects a container from a network
+docker network inspect networkname	--->Displays detailed information about a network
